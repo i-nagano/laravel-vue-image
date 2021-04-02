@@ -59,8 +59,10 @@
                         {{ book.comment }}
                     </td>
                     <td>
-                        <img class="img" v-bind:src="`${book.path}`" alt="image" />
-                        <!-- <img class="img" v-bind:src="book.path" alt="image" /> -->
+                        <a v-bind:href="book.path">
+                        <!-- <img class="img" v-bind:src="`${book.path}`" alt="image" /> -->
+                        <img class="img" v-bind:src="book.path" alt="image" />
+                        </a>
                     </td>
                     <td>
                         <button v-bind:disabled="isPush" v-on:click="displayUpdate(book.id, book.title, book.author, book.comment)">
