@@ -38357,8 +38357,8 @@ var render = function() {
             attrs: {
               name: "updateComment",
               id: "updateComment",
-              cols: "20",
-              rows: "10"
+              cols: "30",
+              rows: "4"
             },
             domProps: { value: _vm.updateComment },
             on: {

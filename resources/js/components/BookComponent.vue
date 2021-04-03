@@ -90,7 +90,7 @@
             <br>
             <label for="updateComment">コメント：</label>
             <br>
-            <textarea name="updateComment" id="updateComment" cols="20" rows="10" v-model="updateComment"></textarea>
+            <textarea name="updateComment" id="updateComment" cols="30" rows="4" v-model="updateComment"></textarea>
             <br>
             <button v-on:click="updateBook(updateId, updateTitle, updateAuthor, updateComment)">更新</button>
             <button v-on:click="updateCancel">キャンセル</button>
