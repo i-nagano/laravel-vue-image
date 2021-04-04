@@ -2001,7 +2001,8 @@ __webpack_require__.r(__webpack_exports__);
         _this2.title = "";
         _this2.author = "";
         _this2.comment = "";
-        _this2.message = ""; //ファイル選択のクリア
+        _this2.message = "";
+        _this2.confirmedImage = ""; //ファイル選択のクリア
 
         _this2.view = false;
 
@@ -2011,7 +2012,7 @@ __webpack_require__.r(__webpack_exports__);
 
         console.log(response);
       })["catch"](function (error) {
-        _this2.message = error.response.data.errors;
+        _this2.message = error;
       });
     },
     displayUpdate: function displayUpdate(id, title, author, comment) {
@@ -6630,7 +6631,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-d9c7ac8e]{\n  width: 70%;\n  border-collapse:separate;\n  border-spacing: 0;\n}\ntable th[data-v-d9c7ac8e]:first-child{\n  border-radius: 5px 0 0 0;\n}\ntable th[data-v-d9c7ac8e]:last-child{\n  border-radius: 0 5px 0 0;\n  border-right: 1px solid #3c6690;\n}\ntable th[data-v-d9c7ac8e]{\n  text-align: center;\n  color:white;\n  background: linear-gradient(#829ebc,#225588);\n  border-left: 1px solid #3c6690;\n  border-top: 1px solid #3c6690;\n  border-bottom: 1px solid #3c6690;\n  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;\n  /* width: 25%; */\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]{\n  text-align: center;\n  border-left: 1px solid #a8b7c5;\n  border-bottom: 1px solid #a8b7c5;\n  border-top:none;\n  box-shadow: 0px -3px 5px 1px #eee inset;\n  /* width: 25%; */\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]:last-child{\n  border-right: 1px solid #a8b7c5;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:first-child {\n  border-radius: 0 0 0 5px;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:last-child {\n  border-radius: 0 0 5px 0;\n}\n.img[data-v-d9c7ac8e] {\n    width: 100px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-d9c7ac8e]{\r\n  width: 70%;\r\n  border-collapse:separate;\r\n  border-spacing: 0;\n}\ntable th[data-v-d9c7ac8e]:first-child{\r\n  border-radius: 5px 0 0 0;\n}\ntable th[data-v-d9c7ac8e]:last-child{\r\n  border-radius: 0 5px 0 0;\r\n  border-right: 1px solid #3c6690;\n}\ntable th[data-v-d9c7ac8e]{\r\n  text-align: center;\r\n  color:white;\r\n  background: linear-gradient(#829ebc,#225588);\r\n  border-left: 1px solid #3c6690;\r\n  border-top: 1px solid #3c6690;\r\n  border-bottom: 1px solid #3c6690;\r\n  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;\r\n  /* width: 25%; */\r\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]{\r\n  text-align: center;\r\n  border-left: 1px solid #a8b7c5;\r\n  border-bottom: 1px solid #a8b7c5;\r\n  border-top:none;\r\n  box-shadow: 0px -3px 5px 1px #eee inset;\r\n  /* width: 25%; */\r\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]:last-child{\r\n  border-right: 1px solid #a8b7c5;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:first-child {\r\n  border-radius: 0 0 0 5px;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:last-child {\r\n  border-radius: 0 0 5px 0;\n}\n.img[data-v-d9c7ac8e] {\r\n    width: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38159,7 +38160,7 @@ var render = function() {
         ? _c("p", [
             _c("img", {
               staticClass: "img",
-              attrs: { src: _vm.confirmedImage, alt: "image" }
+              attrs: { id: "img_a", src: _vm.confirmedImage, alt: "image" }
             })
           ])
         : _vm._e(),
@@ -38214,12 +38215,22 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("td", [
-                _c("a", { attrs: { href: book.path } }, [
-                  _c("img", {
-                    staticClass: "img",
-                    attrs: { src: book.path, alt: "image" }
-                  })
-                ])
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href: book.path,
+                      target: "_blank",
+                      rel: "noopener noreferrer"
+                    }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "img",
+                      attrs: { src: book.path, alt: "image" }
+                    })
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("td", [
