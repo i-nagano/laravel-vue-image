@@ -38221,7 +38221,7 @@ var render = function() {
                     attrs: {
                       href: book.path,
                       target: "_blank",
-                      rel: "noopener noreferer"
+                      rel: "noopener noreferrer"
                     }
                   },
                   [

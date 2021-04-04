@@ -59,7 +59,7 @@
                         {{ book.comment }}
                     </td>
                     <td>
-                        <a v-bind:href="book.path" target="_blank" rel="noopener noreferer">
+                        <a v-bind:href="book.path" target="_blank" rel="noopener noreferrer">
                         <!-- <img class="img" v-bind:src="`${book.path}`" alt="image" /> -->
                         <img class="img" v-bind:src="book.path" alt="image" />
                         </a>
