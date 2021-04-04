@@ -59,7 +59,7 @@
                         {{ book.comment }}
                     </td>
                     <td>
-                        <a v-bind:href="book.path">
+                        <a v-bind:href="book.path" target="_blank" rel="noopener noreferer">
                         <!-- <img class="img" v-bind:src="`${book.path}`" alt="image" /> -->
                         <img class="img" v-bind:src="book.path" alt="image" />
                         </a>
@@ -157,6 +157,7 @@
                     this.author = "";
                     this.comment = "";
                     this.message = "";
+                    this.confirmedImage = "";
                     //ファイル選択のクリア
                     this.view = false;
                     this.$nextTick(function() {
@@ -165,7 +166,7 @@
                     console.log(response);
                 })
                 .catch(error => {
-                    this.message = error.response.data.errors;
+                    this.message = error;
                 });
             },
             displayUpdate(id, title, author, comment) {

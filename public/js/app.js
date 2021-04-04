@@ -2001,7 +2001,8 @@ __webpack_require__.r(__webpack_exports__);
         _this2.title = "";
         _this2.author = "";
         _this2.comment = "";
-        _this2.message = ""; //ファイル選択のクリア
+        _this2.message = "";
+        _this2.confirmedImage = ""; //ファイル選択のクリア
 
         _this2.view = false;
 
@@ -2011,7 +2012,7 @@ __webpack_require__.r(__webpack_exports__);
 
         console.log(response);
       })["catch"](function (error) {
-        _this2.message = error.response.data.errors;
+        _this2.message = error;
       });
     },
     displayUpdate: function displayUpdate(id, title, author, comment) {
@@ -38214,12 +38215,22 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("td", [
-                _c("a", { attrs: { href: book.path } }, [
-                  _c("img", {
-                    staticClass: "img",
-                    attrs: { src: book.path, alt: "image" }
-                  })
-                ])
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href: book.path,
+                      target: "_blank",
+                      rel: "noopener noreferer"
+                    }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "img",
+                      attrs: { src: book.path, alt: "image" }
+                    })
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("td", [
