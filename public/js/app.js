@@ -1969,6 +1969,7 @@ __webpack_require__.r(__webpack_exports__);
       updateComment: "",
       file: "",
       view: true,
+      viewtr: false,
       confirmedImage: ""
     };
   },
@@ -1981,6 +1982,14 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/books').then(function (response) {
         _this.books = response.data;
+
+        if (_this.books.length > 0) {
+          _this.viewtr = true;
+        } else {
+          _this.viewtr = false;
+        }
+
+        ;
         console.log(response.data);
       })["catch"](function (error) {
         _this.message = error;
@@ -6631,7 +6640,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-d9c7ac8e]{\r\n  width: 60%;\r\n  border-collapse:separate;\r\n  border-spacing: 0;\n}\ntable th[data-v-d9c7ac8e]:first-child{\r\n  border-radius: 5px 0 0 0;\n}\ntable th[data-v-d9c7ac8e]:last-child{\r\n  border-radius: 0 5px 0 0;\r\n  border-right: 1px solid #3c6690;\n}\ntable th[data-v-d9c7ac8e]{\r\n  text-align: center;\r\n  color:white;\r\n  background: linear-gradient(#829ebc,#225588);\r\n  border-left: 1px solid #3c6690;\r\n  border-top: 1px solid #3c6690;\r\n  border-bottom: 1px solid #3c6690;\r\n  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;\r\n  /* width: 25%; */\r\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]{\r\n  text-align: center;\r\n  border-left: 1px solid #a8b7c5;\r\n  border-bottom: 1px solid #a8b7c5;\r\n  border-top:none;\r\n  box-shadow: 0px -3px 5px 1px #eee inset;\r\n  /* width: 25%; */\r\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]:last-child{\r\n  border-right: 1px solid #a8b7c5;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:first-child {\r\n  border-radius: 0 0 0 5px;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:last-child {\r\n  border-radius: 0 0 5px 0;\n}\n.img[data-v-d9c7ac8e] {\r\n    width: 100px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-d9c7ac8e]{\n  width: 60%;\n  border-collapse:separate;\n  border-spacing: 0;\n}\ntable th[data-v-d9c7ac8e]:first-child{\n  border-radius: 5px 0 0 0;\n}\ntable th[data-v-d9c7ac8e]:last-child{\n  border-radius: 0 5px 0 0;\n  border-right: 1px solid #3c6690;\n}\ntable th[data-v-d9c7ac8e]{\n  text-align: center;\n  color:white;\n  background: linear-gradient(#829ebc,#225588);\n  border-left: 1px solid #3c6690;\n  border-top: 1px solid #3c6690;\n  border-bottom: 1px solid #3c6690;\n  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;\n  /* width: 25%; */\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]{\n  text-align: center;\n  border-left: 1px solid #a8b7c5;\n  border-bottom: 1px solid #a8b7c5;\n  border-top:none;\n  box-shadow: 0px -3px 5px 1px #eee inset;\n  /* width: 25%; */\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]:last-child{\n  border-right: 1px solid #a8b7c5;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:first-child {\n  border-radius: 0 0 0 5px;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:last-child {\n  border-radius: 0 0 5px 0;\n}\n.img[data-v-d9c7ac8e] {\n    width: 100px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38178,7 +38187,35 @@ var render = function() {
       _c(
         "table",
         [
-          _vm._m(0),
+          _vm.viewtr
+            ? _c("tr", [
+                _c("th", [
+                  _vm._v("\n                    ID\n                ")
+                ]),
+                _vm._v(" "),
+                _c("th", [
+                  _vm._v("\n                    タイトル\n                ")
+                ]),
+                _vm._v(" "),
+                _c("th", [
+                  _vm._v("\n                    著者名\n                ")
+                ]),
+                _vm._v(" "),
+                _c("th", [
+                  _vm._v(
+                    "\n                    コメント（評価）\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("th", [
+                  _vm._v("\n                    イメージ\n                ")
+                ]),
+                _vm._v(" "),
+                _c("th", [_vm._v("-")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("-")])
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.books, function(book) {
             return _c("tr", { key: book.id }, [
@@ -38418,30 +38455,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("\n                    ID\n                ")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("\n                    タイトル\n                ")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("\n                    著者名\n                ")]),
-      _vm._v(" "),
-      _c("th", [
-        _vm._v("\n                    コメント（評価）\n                ")
-      ]),
-      _vm._v(" "),
-      _c("th", [_vm._v("\n                    イメージ\n                ")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("-")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("-")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

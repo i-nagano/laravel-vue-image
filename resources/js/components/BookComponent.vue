@@ -26,7 +26,7 @@
         <!-- Bookの一覧画面 -->
         <div>
             <table>
-                <tr>
+                <tr v-if="viewtr">
                     <th>
                         ID
                     </th>
@@ -123,6 +123,7 @@
                 updateComment: "",
                 file: "",
                 view: true,
+                viewtr: false,
                 confirmedImage: ""
             };
         },
@@ -135,6 +136,11 @@
                 .get('/api/books')
                 .then(response => {
                     this.books = response.data;
+                    if(this.books.length > 0) {
+                        this.viewtr = true;
+                    } else {
+                        this.viewtr = false;
+                    };
                     console.log(response.data);
                 })
                 .catch(error => {
