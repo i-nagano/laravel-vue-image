@@ -15,7 +15,7 @@
             <input type="file" name="image" id="image" v-on:change="confirmImage" v-if="view">
             <br>
             <p v-if="confirmImage">
-                <img id="img_a" class="img" v-bind:src="confirmedImage" alt="image" />
+                <img class="img" v-bind:src="confirmedImage" alt="" />
             </p>
             <p>{{ confirm_message }}</p>
             <br>
@@ -113,7 +113,7 @@
                 confirm_message: "",
                 isPush: false,
                 updateForm: false,
-                books: {},
+                books: [],
                 title: "",
                 author: "",
                 comment: "",
@@ -237,7 +237,7 @@
 
 <style scoped>
 table{
-  width: 70%;
+  width: 60%;
   border-collapse:separate;
   border-spacing: 0;
 }
