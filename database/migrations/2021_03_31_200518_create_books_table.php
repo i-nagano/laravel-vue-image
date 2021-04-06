@@ -17,8 +17,8 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('author');
             $table->string('title');
-            $table->string('comment');
-            $table->string('path');
+            $table->string('comment')->nullable();
+            $table->string('path')->nullable();
             $table->timestamps();
         });
     }
