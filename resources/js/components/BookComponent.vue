@@ -60,12 +60,12 @@
                     </td>
                     <td>
                         <a v-bind:href="book.path" target="_blank" rel="noopener noreferrer">
-                        <!-- <img class="img" v-bind:src="`${book.path}`" alt="image" /> -->
-                        <img class="img" v-bind:src="book.path" alt="image" />
+                            <img class="img" v-bind:src="book.path" alt="image" />
                         </a>
                     </td>
                     <td>
-                        <button v-bind:disabled="isPush" v-on:click="displayUpdate(book.id, book.title, book.author, book.comment)">
+                        <button v-bind:disabled="isPush"
+                            v-on:click="displayUpdate(book.id, book.title, book.author, book.comment)">
                             編集
                         </button>
                     </td>
@@ -80,21 +80,26 @@
         </div>
 
         <!-- 編集フォーム -->
-        <div v-if="updateForm">
-            <p>id:{{ updateId }}, {{ updateTitle }}の情報を編集します</p>
-            <label for="updateTitle">タイトル：</label>
-            <input type="text" name="updateTitle" id="updateTitle" v-model="updateTitle">
-            <br>
-            <label for="updateAuthor">著者名　：</label>
-            <input type="text" name="updateAuthor" id="updateAuthor" v-model="updateAuthor">
-            <br>
-            <label for="updateComment">コメント：</label>
-            <br>
-            <textarea name="updateComment" id="updateComment" cols="30" rows="4" v-model="updateComment"></textarea>
-            <br>
-            <button v-on:click="updateBook(updateId, updateTitle, updateAuthor, updateComment)">更新</button>
-            <button v-on:click="updateCancel">キャンセル</button>
-            <hr>
+        <div class="modal-wrapper" v-if="updateForm">
+            <div class="modal-overlay"></div>
+            <div class="modal-window">
+                <div class="modal-content">
+                    <p>id:{{ updateId }}, {{ updateTitle }}の情報を編集します</p>
+                    <label for="updateTitle">タイトル：</label>
+                    <input type="text" name="updateTitle" id="updateTitle" v-model="updateTitle">
+                    <br>
+                    <label for="updateAuthor">著者名　：</label>
+                    <input type="text" name="updateAuthor" id="updateAuthor" v-model="updateAuthor">
+                    <br>
+                    <label for="updateComment">コメント：</label>
+                    <br>
+                    <textarea name="updateComment" id="updateComment" cols="30" rows="4"
+                        v-model="updateComment"></textarea>
+                    <br>
+                    <button v-on:click="updateBook(updateId, updateTitle, updateAuthor, updateComment)">更新</button>
+                    <button v-on:click="updateCancel">キャンセル</button>
+                </div>
+            </div>
         </div>
 
         <!-- エラーメッセージ -->
@@ -107,8 +112,8 @@
 
 <script>
     export default {
-        data: function() {
-            return{
+        data: function () {
+            return {
                 message: "",
                 confirm_message: "",
                 isPush: false,
@@ -127,25 +132,25 @@
                 confirmedImage: ""
             };
         },
-        created: function() {
+        created: function () {
             this.getBooks();
         },
         methods: {
             getBooks() {
                 axios
-                .get('/api/books')
-                .then(response => {
-                    this.books = response.data;
-                    if(this.books.length > 0) {
-                        this.viewtr = true;
-                    } else {
-                        this.viewtr = false;
-                    };
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    this.message = error;
-                });
+                    .get('/api/books')
+                    .then(response => {
+                        this.books = response.data;
+                        if (this.books.length > 0) {
+                            this.viewtr = true;
+                        } else {
+                            this.viewtr = false;
+                        };
+                        console.log(response.data);
+                    })
+                    .catch(error => {
+                        this.message = error;
+                    });
             },
             addBook() {
                 let data = new FormData();
@@ -154,26 +159,26 @@
                 data.append('author', this.author);
                 data.append('comment', this.comment);
 
-                axios                
-                .post('/api/books', data)
-                .then(response => {
-                    this.getBooks();
-                    this.file = "";
-                    this.title = "";
-                    this.author = "";
-                    this.comment = "";
-                    this.message = "";
-                    this.confirmedImage = "";
-                    //ファイル選択のクリア
-                    this.view = false;
-                    this.$nextTick(function() {
-                        this.view = true;
+                axios
+                    .post('/api/books', data)
+                    .then(response => {
+                        this.getBooks();
+                        this.file = "";
+                        this.title = "";
+                        this.author = "";
+                        this.comment = "";
+                        this.message = "";
+                        this.confirmedImage = "";
+                        //ファイル選択のクリア
+                        this.view = false;
+                        this.$nextTick(function () {
+                            this.view = true;
+                        });
+                        console.log(response);
+                    })
+                    .catch(error => {
+                        this.message = error;
                     });
-                    console.log(response);
-                })
-                .catch(error => {
-                    this.message = error;
-                });
             },
             displayUpdate(id, title, author, comment) {
                 this.isPush = true;
@@ -191,39 +196,39 @@
             },
             updateBook(updateId, updateTitle, updateAuthor, updateComment) {
                 axios
-                .put('/api/books/' + updateId, {
-                    title: this.updateTitle,
-                    author: this.updateAuthor,
-                    comment: this.updateComment
-                })
-                .then(response => {
-                    this.getBooks();
-                    this.isPush = false;
-                    this.updateForm = false;
-                    this.message = "";
-                    console.log(response);
-                })
-                .catch(error => {
-                    this.message = error;
-                });
+                    .put('/api/books/' + updateId, {
+                        title: this.updateTitle,
+                        author: this.updateAuthor,
+                        comment: this.updateComment
+                    })
+                    .then(response => {
+                        this.getBooks();
+                        this.isPush = false;
+                        this.updateForm = false;
+                        this.message = "";
+                        console.log(response);
+                    })
+                    .catch(error => {
+                        this.message = error;
+                    });
             },
             deleteBook(id, title) {
                 axios
-                .delete('/api/books/' + id)
-                .then(response => {
-                    alert("ID「" + id + "」の情報を削除しました");
-                    this.getBooks();
-                    this.message = "";
-                    console.log(response);
-                })
-                .catch(error => {
-                    this.message = error;
-                });
+                    .delete('/api/books/' + id)
+                    .then(response => {
+                        alert("ID「" + id + "」の情報を削除しました");
+                        this.getBooks();
+                        this.message = "";
+                        console.log(response);
+                    })
+                    .catch(error => {
+                        this.message = error;
+                    });
             },
-            confirmImage(event){
+            confirmImage(event) {
                 this.confirm_message = "";
                 this.file = event.target.files[0];
-                if(!this.file.type.match('image.*')) {
+                if (!this.file.type.match('image.*')) {
                     this.confirm_message = '画像ファイルを選択してください';
                     this.confirmedImage = "";
                     return;
@@ -242,56 +247,109 @@
 </script>
 
 <style scoped>
-table{
-  width: 60%;
-  border-collapse:separate;
-  border-spacing: 0;
-}
+    table {
+        width: 60%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
 
-table th:first-child{
-  border-radius: 5px 0 0 0;
-}
+    table th:first-child {
+        border-radius: 5px 0 0 0;
+    }
 
-table th:last-child{
-  border-radius: 0 5px 0 0;
-  border-right: 1px solid #3c6690;
-}
+    table th:last-child {
+        border-radius: 0 5px 0 0;
+        border-right: 1px solid #3c6690;
+    }
 
-table th{
-  text-align: center;
-  color:white;
-  background: linear-gradient(#829ebc,#225588);
-  border-left: 1px solid #3c6690;
-  border-top: 1px solid #3c6690;
-  border-bottom: 1px solid #3c6690;
-  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-  /* width: 25%; */
-  padding: 10px 0;
-}
+    table th {
+        text-align: center;
+        color: white;
+        background: linear-gradient(#829ebc, #225588);
+        border-left: 1px solid #3c6690;
+        border-top: 1px solid #3c6690;
+        border-bottom: 1px solid #3c6690;
+        box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+        padding: 10px 0;
+    }
 
-table td{
-  text-align: center;
-  border-left: 1px solid #a8b7c5;
-  border-bottom: 1px solid #a8b7c5;
-  border-top:none;
-  box-shadow: 0px -3px 5px 1px #eee inset;
-  /* width: 25%; */
-  padding: 10px 0;
-}
+    table td {
+        text-align: center;
+        border-left: 1px solid #a8b7c5;
+        border-bottom: 1px solid #a8b7c5;
+        border-top: none;
+        box-shadow: 0px -3px 5px 1px #eee inset;
+        padding: 10px 0;
+    }
 
-table td:last-child{
-  border-right: 1px solid #a8b7c5;
-}
+    table td:last-child {
+        border-right: 1px solid #a8b7c5;
+    }
 
-table tr:last-child td:first-child {
-  border-radius: 0 0 0 5px;
-}
+    table tr:last-child td:first-child {
+        border-radius: 0 0 0 5px;
+    }
 
-table tr:last-child td:last-child {
-  border-radius: 0 0 5px 0;
-}
+    table tr:last-child td:last-child {
+        border-radius: 0 0 5px 0;
+    }
 
-.img {
-    width: 100px;
-}
+    .img {
+        width: 100px;
+    }
+
+    .modal-wrapper {
+        z-index: 999;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 40px 10px;
+        text-align: center
+    }
+
+    .modal-wrapper:target {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity .4s, visibility .4s;
+    }
+
+    .modal-wrapper::after {
+        display: inline-block;
+        height: 100%;
+        margin-left: -.05em;
+        vertical-align: middle;
+        content: ""
+    }
+
+    .modal-wrapper .modal-window {
+        box-sizing: border-box;
+        display: inline-block;
+        z-index: 20;
+        position: relative;
+        width: 70%;
+        max-width: 600px;
+        padding: 30px 30px 15px;
+        border-radius: 2px;
+        background: #fff;
+        box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+        vertical-align: middle
+    }
+
+    .modal-wrapper .modal-window .modal-content {
+        max-height: 80vh;
+        overflow-y: auto;
+        text-align: left
+    }
+
+    .modal-overlay {
+        z-index: 10;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .8)
+    }
 </style>

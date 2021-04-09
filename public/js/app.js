@@ -1952,6 +1952,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6640,7 +6645,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-d9c7ac8e]{\n  width: 60%;\n  border-collapse:separate;\n  border-spacing: 0;\n}\ntable th[data-v-d9c7ac8e]:first-child{\n  border-radius: 5px 0 0 0;\n}\ntable th[data-v-d9c7ac8e]:last-child{\n  border-radius: 0 5px 0 0;\n  border-right: 1px solid #3c6690;\n}\ntable th[data-v-d9c7ac8e]{\n  text-align: center;\n  color:white;\n  background: linear-gradient(#829ebc,#225588);\n  border-left: 1px solid #3c6690;\n  border-top: 1px solid #3c6690;\n  border-bottom: 1px solid #3c6690;\n  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;\n  /* width: 25%; */\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]{\n  text-align: center;\n  border-left: 1px solid #a8b7c5;\n  border-bottom: 1px solid #a8b7c5;\n  border-top:none;\n  box-shadow: 0px -3px 5px 1px #eee inset;\n  /* width: 25%; */\n  padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]:last-child{\n  border-right: 1px solid #a8b7c5;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:first-child {\n  border-radius: 0 0 0 5px;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:last-child {\n  border-radius: 0 0 5px 0;\n}\n.img[data-v-d9c7ac8e] {\n    width: 100px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-d9c7ac8e] {\n    width: 60%;\n    border-collapse: separate;\n    border-spacing: 0;\n}\ntable th[data-v-d9c7ac8e]:first-child {\n    border-radius: 5px 0 0 0;\n}\ntable th[data-v-d9c7ac8e]:last-child {\n    border-radius: 0 5px 0 0;\n    border-right: 1px solid #3c6690;\n}\ntable th[data-v-d9c7ac8e] {\n    text-align: center;\n    color: white;\n    background: linear-gradient(#829ebc, #225588);\n    border-left: 1px solid #3c6690;\n    border-top: 1px solid #3c6690;\n    border-bottom: 1px solid #3c6690;\n    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;\n    padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e] {\n    text-align: center;\n    border-left: 1px solid #a8b7c5;\n    border-bottom: 1px solid #a8b7c5;\n    border-top: none;\n    box-shadow: 0px -3px 5px 1px #eee inset;\n    padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]:last-child {\n    border-right: 1px solid #a8b7c5;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:first-child {\n    border-radius: 0 0 0 5px;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:last-child {\n    border-radius: 0 0 5px 0;\n}\n.img[data-v-d9c7ac8e] {\n    width: 100px;\n}\n.modal-wrapper[data-v-d9c7ac8e] {\n    z-index: 999;\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    padding: 40px 10px;\n    text-align: center\n}\n.modal-wrapper[data-v-d9c7ac8e]:target {\n    opacity: 1;\n    visibility: visible;\n    transition: opacity .4s, visibility .4s;\n}\n.modal-wrapper[data-v-d9c7ac8e]::after {\n    display: inline-block;\n    height: 100%;\n    margin-left: -.05em;\n    vertical-align: middle;\n    content: \"\"\n}\n.modal-wrapper .modal-window[data-v-d9c7ac8e] {\n    box-sizing: border-box;\n    display: inline-block;\n    z-index: 20;\n    position: relative;\n    width: 70%;\n    max-width: 600px;\n    padding: 30px 30px 15px;\n    border-radius: 2px;\n    background: #fff;\n    box-shadow: 0 0 30px rgba(0, 0, 0, .6);\n    vertical-align: middle\n}\n.modal-wrapper .modal-window .modal-content[data-v-d9c7ac8e] {\n    max-height: 80vh;\n    overflow-y: auto;\n    text-align: left\n}\n.modal-overlay[data-v-d9c7ac8e] {\n    z-index: 10;\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background: rgba(0, 0, 0, .8)\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38322,127 +38327,135 @@ var render = function() {
     ]),
     _vm._v(" "),
     _vm.updateForm
-      ? _c("div", [
-          _c("p", [
-            _vm._v(
-              "id:" +
-                _vm._s(_vm.updateId) +
-                ", " +
-                _vm._s(_vm.updateTitle) +
-                "の情報を編集します"
-            )
-          ]),
+      ? _c("div", { staticClass: "modal-wrapper" }, [
+          _c("div", { staticClass: "modal-overlay" }),
           _vm._v(" "),
-          _c("label", { attrs: { for: "updateTitle" } }, [
-            _vm._v("タイトル：")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.updateTitle,
-                expression: "updateTitle"
-              }
-            ],
-            attrs: { type: "text", name: "updateTitle", id: "updateTitle" },
-            domProps: { value: _vm.updateTitle },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("div", { staticClass: "modal-window" }, [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("p", [
+                _vm._v(
+                  "id:" +
+                    _vm._s(_vm.updateId) +
+                    ", " +
+                    _vm._s(_vm.updateTitle) +
+                    "の情報を編集します"
+                )
+              ]),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "updateTitle" } }, [
+                _vm._v("タイトル：")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.updateTitle,
+                    expression: "updateTitle"
+                  }
+                ],
+                attrs: { type: "text", name: "updateTitle", id: "updateTitle" },
+                domProps: { value: _vm.updateTitle },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.updateTitle = $event.target.value
+                  }
                 }
-                _vm.updateTitle = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "updateAuthor" } }, [
-            _vm._v("著者名　：")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.updateAuthor,
-                expression: "updateAuthor"
-              }
-            ],
-            attrs: { type: "text", name: "updateAuthor", id: "updateAuthor" },
-            domProps: { value: _vm.updateAuthor },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "updateAuthor" } }, [
+                _vm._v("著者名　：")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.updateAuthor,
+                    expression: "updateAuthor"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "updateAuthor",
+                  id: "updateAuthor"
+                },
+                domProps: { value: _vm.updateAuthor },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.updateAuthor = $event.target.value
+                  }
                 }
-                _vm.updateAuthor = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "updateComment" } }, [
-            _vm._v("コメント：")
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.updateComment,
-                expression: "updateComment"
-              }
-            ],
-            attrs: {
-              name: "updateComment",
-              id: "updateComment",
-              cols: "30",
-              rows: "4"
-            },
-            domProps: { value: _vm.updateComment },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "updateComment" } }, [
+                _vm._v("コメント：")
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.updateComment,
+                    expression: "updateComment"
+                  }
+                ],
+                attrs: {
+                  name: "updateComment",
+                  id: "updateComment",
+                  cols: "30",
+                  rows: "4"
+                },
+                domProps: { value: _vm.updateComment },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.updateComment = $event.target.value
+                  }
                 }
-                _vm.updateComment = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.updateBook(
-                    _vm.updateId,
-                    _vm.updateTitle,
-                    _vm.updateAuthor,
-                    _vm.updateComment
-                  )
-                }
-              }
-            },
-            [_vm._v("更新")]
-          ),
-          _vm._v(" "),
-          _c("button", { on: { click: _vm.updateCancel } }, [
-            _vm._v("キャンセル")
-          ]),
-          _vm._v(" "),
-          _c("hr")
+              }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.updateBook(
+                        _vm.updateId,
+                        _vm.updateTitle,
+                        _vm.updateAuthor,
+                        _vm.updateComment
+                      )
+                    }
+                  }
+                },
+                [_vm._v("更新")]
+              ),
+              _vm._v(" "),
+              _c("button", { on: { click: _vm.updateCancel } }, [
+                _vm._v("キャンセル")
+              ])
+            ])
+          ])
         ])
       : _vm._e(),
     _vm._v(" "),
