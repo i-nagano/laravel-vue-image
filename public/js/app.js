@@ -1845,6 +1845,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./axios-auth.js */ "./resources/js/components/axios-auth.js");
 //
 //
 //
@@ -1957,6 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1985,7 +1987,7 @@ __webpack_require__.r(__webpack_exports__);
     getBooks: function getBooks() {
       var _this = this;
 
-      axios.get('/api/books').then(function (response) {
+      _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.get('/api/books').then(function (response) {
         _this.books = response.data;
 
         if (_this.books.length > 0) {
@@ -2008,7 +2010,7 @@ __webpack_require__.r(__webpack_exports__);
       data.append('title', this.title);
       data.append('author', this.author);
       data.append('comment', this.comment);
-      axios.post('/api/books', data).then(function (response) {
+      _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.post('/api/books', data).then(function (response) {
         _this2.getBooks();
 
         _this2.file = "";
@@ -2046,7 +2048,7 @@ __webpack_require__.r(__webpack_exports__);
     updateBook: function updateBook(updateId, updateTitle, updateAuthor, updateComment) {
       var _this3 = this;
 
-      axios.put('/api/books/' + updateId, {
+      _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.put('/api/books/' + updateId, {
         title: this.updateTitle,
         author: this.updateAuthor,
         comment: this.updateComment
@@ -2064,7 +2066,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteBook: function deleteBook(id, title) {
       var _this4 = this;
 
-      axios["delete"]('/api/books/' + id).then(function (response) {
+      _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.delete('/api/books/' + id).then(function (response) {
         alert("ID「" + id + "」の情報を削除しました");
 
         _this4.getBooks();
@@ -2184,6 +2186,27 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/axios-auth.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/axios-auth.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var instance = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
+  baseURL: ''
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (instance);
 
 /***/ }),
 

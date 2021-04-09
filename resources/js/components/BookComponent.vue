@@ -111,6 +111,7 @@
 </template>
 
 <script>
+    import axios from './axios-auth.js';
     export default {
         data: function () {
             return {
