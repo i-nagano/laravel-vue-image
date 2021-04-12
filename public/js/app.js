@@ -1958,6 +1958,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1970,6 +1974,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "",
       author: "",
       comment: "",
+      search_title: "",
       updateId: "",
       updateTitle: "",
       updateAuthor: "",
@@ -2002,8 +2007,17 @@ __webpack_require__.r(__webpack_exports__);
         _this.message = error;
       });
     },
-    addBook: function addBook() {
+    searchBooks: function searchBooks() {
       var _this2 = this;
+
+      _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.get('/api/books/search/' + this.search_title).then(function (response) {
+        _this2.books = response.data;
+      })["catch"](function (error) {
+        _this2.message = error;
+      });
+    },
+    addBook: function addBook() {
+      var _this3 = this;
 
       var data = new FormData();
       data.append('file', this.file);
@@ -2011,24 +2025,24 @@ __webpack_require__.r(__webpack_exports__);
       data.append('author', this.author);
       data.append('comment', this.comment);
       _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.post('/api/books', data).then(function (response) {
-        _this2.getBooks();
+        _this3.getBooks();
 
-        _this2.file = "";
-        _this2.title = "";
-        _this2.author = "";
-        _this2.comment = "";
-        _this2.message = "";
-        _this2.confirmedImage = ""; //ファイル選択のクリア
+        _this3.file = "";
+        _this3.title = "";
+        _this3.author = "";
+        _this3.comment = "";
+        _this3.message = "";
+        _this3.confirmedImage = ""; //ファイル選択のクリア
 
-        _this2.view = false;
+        _this3.view = false;
 
-        _this2.$nextTick(function () {
+        _this3.$nextTick(function () {
           this.view = true;
         });
 
         console.log(response);
       })["catch"](function (error) {
-        _this2.message = error;
+        _this3.message = error;
       });
     },
     displayUpdate: function displayUpdate(id, title, author, comment) {
@@ -2046,35 +2060,35 @@ __webpack_require__.r(__webpack_exports__);
       this.message = "";
     },
     updateBook: function updateBook(updateId, updateTitle, updateAuthor, updateComment) {
-      var _this3 = this;
+      var _this4 = this;
 
       _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.put('/api/books/' + updateId, {
         title: this.updateTitle,
         author: this.updateAuthor,
         comment: this.updateComment
       }).then(function (response) {
-        _this3.getBooks();
-
-        _this3.isPush = false;
-        _this3.updateForm = false;
-        _this3.message = "";
-        console.log(response);
-      })["catch"](function (error) {
-        _this3.message = error;
-      });
-    },
-    deleteBook: function deleteBook(id, title) {
-      var _this4 = this;
-
-      _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.delete('/api/books/' + id).then(function (response) {
-        alert("ID「" + id + "」の情報を削除しました");
-
         _this4.getBooks();
 
+        _this4.isPush = false;
+        _this4.updateForm = false;
         _this4.message = "";
         console.log(response);
       })["catch"](function (error) {
         _this4.message = error;
+      });
+    },
+    deleteBook: function deleteBook(id, title) {
+      var _this5 = this;
+
+      _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.delete('/api/books/' + id).then(function (response) {
+        alert("ID「" + id + "」の情報を削除しました");
+
+        _this5.getBooks();
+
+        _this5.message = "";
+        console.log(response);
+      })["catch"](function (error) {
+        _this5.message = error;
       });
     },
     confirmImage: function confirmImage(event) {
@@ -2091,13 +2105,13 @@ __webpack_require__.r(__webpack_exports__);
       this.createImage(this.file);
     },
     createImage: function createImage(file) {
-      var _this5 = this;
+      var _this6 = this;
 
       var reader = new FileReader();
       reader.readAsDataURL(file);
 
       reader.onload = function (event) {
-        _this5.confirmedImage = event.target.result;
+        _this6.confirmedImage = event.target.result;
       };
     }
   }
@@ -38212,6 +38226,35 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", [
+      _c("label", { attrs: { for: "serch_title" } }, [
+        _vm._v("タイトル検索：")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.search_title,
+            expression: "search_title"
+          }
+        ],
+        attrs: { type: "search", name: "", id: "" },
+        domProps: { value: _vm.search_title },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.search_title = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.searchBooks } }, [_vm._v("検索")]),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.getBooks } }, [_vm._v("クリア")]),
+      _vm._v(" "),
       _c(
         "table",
         [

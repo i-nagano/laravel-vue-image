@@ -19,3 +19,4 @@ Route::get('/books', [BookController::class,'index'])->name('getBooks');
 Route::post('/books', [BookController::class, 'store'])->name('postBook');
 Route::put('/books/{id}', [BookController::class, 'update'])->name('updateBook');
 Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('deleteBook');
+Route::get('/books/search/{title}', [BookController::class, 'search'])->name('searchBooks');

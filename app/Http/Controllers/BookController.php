@@ -34,7 +34,7 @@ class BookController extends Controller
             'file.required' => '画像が選択されていません',
             'file.image' => '画像ファイルではありません',
         ]);
- 
+
         if (request()->file) {
             $file_name = time() . '.' . request()->file->getClientOriginalName();
             request()->file->storeAs('public', $file_name);
@@ -60,6 +60,20 @@ class BookController extends Controller
     public function show(Book $book)
     {
         //
+    }
+
+    /**
+     * Search for Book title.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Book  $books
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Book $books, $title)
+    {
+        //
+        $books = Book::where('title', 'like', '%' .$title. '%')->get();
+        return response()->json($books);
     }
 
     /**

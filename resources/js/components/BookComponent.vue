@@ -25,6 +25,10 @@
 
         <!-- Bookの一覧画面 -->
         <div>
+            <label for="serch_title">タイトル検索：</label>
+            <input type="search" name="" id="" v-model="search_title">
+            <button v-on:click="searchBooks">検索</button>
+            <button v-on:click="getBooks">クリア</button>
             <table>
                 <tr v-if="viewtr">
                     <th>
@@ -123,6 +127,7 @@
                 title: "",
                 author: "",
                 comment: "",
+                search_title: "",
                 updateId: "",
                 updateTitle: "",
                 updateAuthor: "",
@@ -152,6 +157,16 @@
                     .catch(error => {
                         this.message = error;
                     });
+            },
+            searchBooks() {
+                axios
+                .get('/api/books/search/' + this.search_title)
+                .then(response =>{
+                    this.books = response.data;
+                })
+                .catch(error =>{
+                    this.message = error;
+                });
             },
             addBook() {
                 let data = new FormData();
