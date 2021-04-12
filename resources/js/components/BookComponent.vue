@@ -28,7 +28,7 @@
             <label for="serch_title">タイトル検索：</label>
             <input type="search" name="" id="" v-model="search_title">
             <button v-on:click="searchBooks">検索</button>
-            <button v-on:click="getBooks">クリア</button>
+            <button v-on:click="clearBooks">クリア</button>
             <table>
                 <tr v-if="viewtr">
                     <th>
@@ -167,6 +167,10 @@
                 .catch(error =>{
                     this.message = error;
                 });
+            },
+            clearBooks() {
+                this.getBooks();
+                this.search_title = "";
             },
             addBook() {
                 let data = new FormData();

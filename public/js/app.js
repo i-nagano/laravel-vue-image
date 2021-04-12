@@ -2016,6 +2016,10 @@ __webpack_require__.r(__webpack_exports__);
         _this2.message = error;
       });
     },
+    clearBooks: function clearBooks() {
+      this.getBooks();
+      this.search_title = "";
+    },
     addBook: function addBook() {
       var _this3 = this;
 
@@ -38253,7 +38257,7 @@ var render = function() {
       _vm._v(" "),
       _c("button", { on: { click: _vm.searchBooks } }, [_vm._v("検索")]),
       _vm._v(" "),
-      _c("button", { on: { click: _vm.getBooks } }, [_vm._v("クリア")]),
+      _c("button", { on: { click: _vm.clearBooks } }, [_vm._v("クリア")]),
       _vm._v(" "),
       _c(
         "table",
