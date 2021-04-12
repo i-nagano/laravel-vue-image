@@ -29,6 +29,8 @@
             <input type="search" name="" id="" v-model="search_title">
             <button v-on:click="searchBooks">検索</button>
             <button v-on:click="clearBooks">クリア</button>
+            <br>
+            <p v-if="search_error_message"> {{ search_error_message }} </p>
             <table>
                 <tr v-if="viewtr">
                     <th>
@@ -121,6 +123,7 @@
             return {
                 message: "",
                 confirm_message: "",
+                search_error_message: false,
                 isPush: false,
                 updateForm: false,
                 books: [],
@@ -143,6 +146,7 @@
         },
         methods: {
             getBooks() {
+                this.search_error_message = "";
                 axios
                     .get('/api/books')
                     .then(response => {
@@ -159,6 +163,11 @@
                     });
             },
             searchBooks() {
+                this.search_error_message = "";
+                if(this.search_title == "") {
+                    this.search_error_message = '検索文字列を入力してください';
+                    return;
+                };
                 axios
                 .get('/api/books/search/' + this.search_title)
                 .then(response =>{
