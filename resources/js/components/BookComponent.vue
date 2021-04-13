@@ -235,6 +235,7 @@
                         this.isPush = false;
                         this.updateForm = false;
                         this.message = "";
+                        this.search_title = "";
                         console.log(response);
                     })
                     .catch(error => {

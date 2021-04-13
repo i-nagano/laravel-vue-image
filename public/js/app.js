@@ -2088,6 +2088,7 @@ __webpack_require__.r(__webpack_exports__);
         _this4.isPush = false;
         _this4.updateForm = false;
         _this4.message = "";
+        _this4.search_title = "";
         console.log(response);
       })["catch"](function (error) {
         _this4.message = error;
