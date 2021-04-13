@@ -1970,6 +1970,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       message: "",
       confirm_message: "",
+      search_error_message: false,
       isPush: false,
       updateForm: false,
       books: [],
@@ -1994,6 +1995,7 @@ __webpack_require__.r(__webpack_exports__);
     getBooks: function getBooks() {
       var _this = this;
 
+      this.search_error_message = "";
       _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.get('/api/books').then(function (response) {
         _this.books = response.data;
 
@@ -2012,6 +2014,14 @@ __webpack_require__.r(__webpack_exports__);
     searchBooks: function searchBooks() {
       var _this2 = this;
 
+      this.search_error_message = "";
+
+      if (this.search_title == "") {
+        this.search_error_message = '検索文字列を入力してください';
+        return;
+      }
+
+      ;
       _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.get('/api/books/search/' + this.search_title).then(function (response) {
         _this2.books = response.data;
       })["catch"](function (error) {
@@ -2078,6 +2088,7 @@ __webpack_require__.r(__webpack_exports__);
         _this4.isPush = false;
         _this4.updateForm = false;
         _this4.message = "";
+        _this4.search_title = "";
         console.log(response);
       })["catch"](function (error) {
         _this4.message = error;
@@ -38260,6 +38271,12 @@ var render = function() {
       _c("button", { on: { click: _vm.searchBooks } }, [_vm._v("検索")]),
       _vm._v(" "),
       _c("button", { on: { click: _vm.clearBooks } }, [_vm._v("クリア")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _vm.search_error_message
+        ? _c("p", [_vm._v(" " + _vm._s(_vm.search_error_message) + " ")])
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "table",

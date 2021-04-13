@@ -71,7 +71,7 @@ class BookController extends Controller
      */
     public function search(Book $books, $title)
     {
-        //
+        //タイトルに含まれる文言をもとにBookの'title'を検索
         $books = Book::where('title', 'like', '%' .$title. '%')->get();
         return response()->json($books);
     }
