@@ -103,6 +103,7 @@
                     <button v-on:click="updateBook(updateId, updateTitle, updateAuthor, updateComment)">更新</button>
                     <button v-on:click="updateCancel">キャンセル</button>
                 </div>
+                <button id="x-button" class="modal-close" v-on:click="updateCancel">×</button>
             </div>
         </div>
 
@@ -160,13 +161,13 @@
             },
             searchBooks() {
                 axios
-                .get('/api/books/search/' + this.search_title)
-                .then(response =>{
-                    this.books = response.data;
-                })
-                .catch(error =>{
-                    this.message = error;
-                });
+                    .get('/api/books/search/' + this.search_title)
+                    .then(response => {
+                        this.books = response.data;
+                    })
+                    .catch(error => {
+                        this.message = error;
+                    });
             },
             clearBooks() {
                 this.getBooks();
@@ -371,5 +372,33 @@
         bottom: 0;
         left: 0;
         background: rgba(0, 0, 0, .8)
+    }
+
+    .modal-wrapper .modal-close {
+        z-index: 20;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 35px;
+        color: #95979c !important;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 35px;
+        text-align: center;
+        text-decoration: none;
+        text-indent: 0
+    }
+
+    .modal-wrapper .modal-close:hover {
+        color: #2b2e38 !important
+    }
+
+    #x-button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
     }
 </style>
