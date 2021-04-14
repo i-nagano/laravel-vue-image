@@ -87,7 +87,7 @@
 
         <!-- 編集フォーム -->
         <div class="modal-wrapper" v-if="updateForm">
-            <div class="modal-overlay"></div>
+            <div class="modal-overlay" v-on:click="updateCancel"></div>
             <div class="modal-window">
                 <div class="modal-content">
                     <p>id:{{ updateId }}, {{ updateTitle }}の情報を編集します</p>

@@ -1964,6 +1964,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -38417,7 +38418,10 @@ var render = function() {
     _vm._v(" "),
     _vm.updateForm
       ? _c("div", { staticClass: "modal-wrapper" }, [
-          _c("div", { staticClass: "modal-overlay" }),
+          _c("div", {
+            staticClass: "modal-overlay",
+            on: { click: _vm.updateCancel }
+          }),
           _vm._v(" "),
           _c("div", { staticClass: "modal-window" }, [
             _c("div", { staticClass: "modal-content" }, [
