@@ -38425,9 +38425,9 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "modal-window" }, [
             _c("div", { staticClass: "modal-content" }, [
-              _c("p", [
+              _c("h4", [
                 _vm._v(
-                  "id:" +
+                  "ID:" +
                     _vm._s(_vm.updateId) +
                     ", " +
                     _vm._s(_vm.updateTitle) +
