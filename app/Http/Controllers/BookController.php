@@ -29,10 +29,10 @@ class BookController extends Controller
     {
         //添付する画像ファイルのヴァリデーション
         $this->validate($request, [
-            'file' => 'required|image'
+            'file' => 'required|mimes:jpeg,png,jpg,bmb,mp4,qt,x-ms-wmv,mpeg,x-msvideo'
         ], [
-            'file.required' => '画像が選択されていません',
-            'file.image' => '画像ファイルではありません',
+            'file.required' => 'ファイルが選択されていません',
+            'file.mimes' => '画像もしくは動画ファイルではありません',
         ]);
 
         if (request()->file) {

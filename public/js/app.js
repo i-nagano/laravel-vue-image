@@ -1964,6 +1964,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -2112,8 +2113,8 @@ __webpack_require__.r(__webpack_exports__);
       this.confirm_message = "";
       this.file = event.target.files[0];
 
-      if (!this.file.type.match('image.*')) {
-        this.confirm_message = '画像ファイルを選択してください';
+      if (!this.file.type.match('image.*') && !this.file.type.match('video.*')) {
+        this.confirm_message = '画像または動画ファイルを選択してください';
         this.confirmedImage = "";
         return;
       }

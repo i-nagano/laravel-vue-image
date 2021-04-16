@@ -259,8 +259,9 @@
             confirmImage(event) {
                 this.confirm_message = "";
                 this.file = event.target.files[0];
-                if (!this.file.type.match('image.*')) {
-                    this.confirm_message = '画像ファイルを選択してください';
+                if (!this.file.type.match('image.*')
+                && !this.file.type.match('video.*')) {
+                    this.confirm_message = '画像または動画ファイルを選択してください';
                     this.confirmedImage = "";
                     return;
                 };
