@@ -1,30 +1,37 @@
 <template>
     <div>
         <!-- 新規追加フォーム -->
-        <div>
-            <label for="title">タイトル：</label>
-            <input type="text" name="title" id="title" v-model="title" />
-            <br>
-            <label for="author">著者名　：</label>
-            <input type="text" name="author" id="author" v-model="author" />
-            <br>
-            <label for="comment">コメント：</label>
-            <br>
-            <textarea name="comment" id="comment" cols="30" rows="4" v-model="comment"></textarea>
-            <br>
-            <input type="file" name="image" id="image" v-on:change="confirmImage" v-if="view">
-            <br>
-            <p v-if="confirmImage">
-                <img class="img" v-bind:src="confirmedImage" alt="" />
-            </p>
-            <p>{{ confirm_message }}</p>
-            <br>
-            <button v-on:click="addBook">登録</button>
-            <hr>
+        <div class="modal-wrapper" v-if="inputForm">
+            <div class="modal-overlay" v-on:click="inputCancel"></div>
+            <div class="modal-window">
+                <div class="modal-content">
+                    <label for="title">タイトル：</label>
+                    <input type="text" name="title" id="title" v-model="title" />
+                    <br>
+                    <label for="author">著者名　：</label>
+                    <input type="text" name="author" id="author" v-model="author" />
+                    <br>
+                    <label for="comment">コメント：</label>
+                    <br>
+                    <textarea name="comment" id="comment" cols="30" rows="3" v-model="comment"></textarea>
+                    <br>
+                    <input type="file" name="image" id="image" v-on:change="confirmImage" v-if="view">
+                    <br>
+                    <p v-if="confirmImage">
+                        <img class="img" v-bind:src="confirmedImage" alt="" />
+                    </p>
+                    <p>{{ confirm_message }}</p>
+                    <br>
+                    <button v-on:click="addBook">登録</button>
+                    <button v-on:click="inputCancel">キャンセル</button>
+                </div>
+                <button id="x-button" class="modal-close" v-on:click="inputCancel">×</button>
+            </div>
         </div>
 
         <!-- Bookの一覧画面 -->
         <div>
+            <input type="button" value="新規登録" v-on:click="inputStart">
             <label for="serch_title">タイトル検索：</label>
             <input type="search" name="" id="" v-model="search_title">
             <button v-on:click="searchBooks">検索</button>
@@ -66,7 +73,11 @@
                     </td>
                     <td>
                         <a v-bind:href="book.path" target="_blank" rel="noopener noreferrer">
-                            <img class="img" v-bind:src="book.path" alt="image" />
+                            <img class="img" v-bind:src="book.path" alt="【動画】" />
+                            <!-- <video controls width="150px">
+                                <source class="video" type="" v-bind:src="book.path" poster="none">
+                                *** type="video/mp4" type="video/webm" type="video/wmv" ***
+                            </video> -->
                         </a>
                     </td>
                     <td>
@@ -99,7 +110,7 @@
                     <br>
                     <label for="updateComment">コメント：</label>
                     <br>
-                    <textarea name="updateComment" id="updateComment" cols="30" rows="4"
+                    <textarea name="updateComment" id="updateComment" cols="30" rows="3"
                         v-model="updateComment"></textarea>
                     <br>
                     <button v-on:click="updateBook(updateId, updateTitle, updateAuthor, updateComment)">更新</button>
@@ -126,6 +137,7 @@
                 confirm_message: "",
                 search_error_message: false,
                 isPush: false,
+                inputForm: false,
                 updateForm: false,
                 books: [],
                 title: "",
@@ -165,7 +177,7 @@
             },
             searchBooks() {
                 this.search_error_message = "";
-                if(this.search_title == "") {
+                if (this.search_title == "") {
                     this.search_error_message = '検索文字列を入力してください';
                     return;
                 };
@@ -209,6 +221,15 @@
                     .catch(error => {
                         this.message = error;
                     });
+                    this.inputCancel();
+            },
+            inputStart() {
+                this.message = "";
+                this.inputForm = true;
+            },
+            inputCancel() {
+                this.inputForm = false;
+                this.message = "";
             },
             displayUpdate(id, title, author, comment) {
                 this.isPush = true;
@@ -259,8 +280,8 @@
             confirmImage(event) {
                 this.confirm_message = "";
                 this.file = event.target.files[0];
-                if (!this.file.type.match('image.*')
-                && !this.file.type.match('video.*')) {
+                if (!this.file.type.match('image.*') &&
+                    !this.file.type.match('video.*')) {
                     this.confirm_message = '画像または動画ファイルを選択してください';
                     this.confirmedImage = "";
                     return;
@@ -276,6 +297,7 @@
             },
         },
     };
+
 </script>
 
 <style scoped>
@@ -412,4 +434,5 @@
         padding: 0;
         appearance: none;
     }
+
 </style>

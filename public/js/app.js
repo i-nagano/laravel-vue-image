@@ -1965,6 +1965,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -1973,6 +1984,7 @@ __webpack_require__.r(__webpack_exports__);
       confirm_message: "",
       search_error_message: false,
       isPush: false,
+      inputForm: false,
       updateForm: false,
       books: [],
       title: "",
@@ -2061,6 +2073,15 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this3.message = error;
       });
+      this.inputCancel();
+    },
+    inputStart: function inputStart() {
+      this.message = "";
+      this.inputForm = true;
+    },
+    inputCancel: function inputCancel() {
+      this.inputForm = false;
+      this.message = "";
     },
     displayUpdate: function displayUpdate(id, title, author, comment) {
       this.isPush = true;
@@ -6700,7 +6721,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-d9c7ac8e] {\n    width: 60%;\n    border-collapse: separate;\n    border-spacing: 0;\n}\ntable th[data-v-d9c7ac8e]:first-child {\n    border-radius: 5px 0 0 0;\n}\ntable th[data-v-d9c7ac8e]:last-child {\n    border-radius: 0 5px 0 0;\n    border-right: 1px solid #3c6690;\n}\ntable th[data-v-d9c7ac8e] {\n    text-align: center;\n    color: white;\n    background: linear-gradient(#829ebc, #225588);\n    border-left: 1px solid #3c6690;\n    border-top: 1px solid #3c6690;\n    border-bottom: 1px solid #3c6690;\n    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;\n    padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e] {\n    text-align: center;\n    border-left: 1px solid #a8b7c5;\n    border-bottom: 1px solid #a8b7c5;\n    border-top: none;\n    box-shadow: 0px -3px 5px 1px #eee inset;\n    padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]:last-child {\n    border-right: 1px solid #a8b7c5;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:first-child {\n    border-radius: 0 0 0 5px;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:last-child {\n    border-radius: 0 0 5px 0;\n}\n.img[data-v-d9c7ac8e] {\n    width: 100px;\n}\n.modal-wrapper[data-v-d9c7ac8e] {\n    z-index: 999;\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    padding: 40px 10px;\n    text-align: center\n}\n.modal-wrapper[data-v-d9c7ac8e]:target {\n    opacity: 1;\n    visibility: visible;\n    transition: opacity .4s, visibility .4s;\n}\n.modal-wrapper[data-v-d9c7ac8e]::after {\n    display: inline-block;\n    height: 100%;\n    margin-left: -.05em;\n    vertical-align: middle;\n    content: \"\"\n}\n.modal-wrapper .modal-window[data-v-d9c7ac8e] {\n    box-sizing: border-box;\n    display: inline-block;\n    z-index: 20;\n    position: relative;\n    width: 70%;\n    max-width: 600px;\n    padding: 30px 30px 15px;\n    border-radius: 2px;\n    background: #fff;\n    box-shadow: 0 0 30px rgba(0, 0, 0, .6);\n    vertical-align: middle\n}\n.modal-wrapper .modal-window .modal-content[data-v-d9c7ac8e] {\n    max-height: 80vh;\n    overflow-y: auto;\n    text-align: left\n}\n.modal-overlay[data-v-d9c7ac8e] {\n    z-index: 10;\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background: rgba(0, 0, 0, .8)\n}\n.modal-wrapper .modal-close[data-v-d9c7ac8e] {\n    z-index: 20;\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 35px;\n    color: #95979c !important;\n    font-size: 20px;\n    font-weight: 700;\n    line-height: 35px;\n    text-align: center;\n    text-decoration: none;\n    text-indent: 0\n}\n.modal-wrapper .modal-close[data-v-d9c7ac8e]:hover {\n    color: #2b2e38 !important\n}\n#x-button[data-v-d9c7ac8e] {\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n    outline: none;\n    padding: 0;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-d9c7ac8e] {\n    width: 60%;\n    border-collapse: separate;\n    border-spacing: 0;\n}\ntable th[data-v-d9c7ac8e]:first-child {\n    border-radius: 5px 0 0 0;\n}\ntable th[data-v-d9c7ac8e]:last-child {\n    border-radius: 0 5px 0 0;\n    border-right: 1px solid #3c6690;\n}\ntable th[data-v-d9c7ac8e] {\n    text-align: center;\n    color: white;\n    background: linear-gradient(#829ebc, #225588);\n    border-left: 1px solid #3c6690;\n    border-top: 1px solid #3c6690;\n    border-bottom: 1px solid #3c6690;\n    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;\n    padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e] {\n    text-align: center;\n    border-left: 1px solid #a8b7c5;\n    border-bottom: 1px solid #a8b7c5;\n    border-top: none;\n    box-shadow: 0px -3px 5px 1px #eee inset;\n    padding: 10px 0;\n}\ntable td[data-v-d9c7ac8e]:last-child {\n    border-right: 1px solid #a8b7c5;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:first-child {\n    border-radius: 0 0 0 5px;\n}\ntable tr:last-child td[data-v-d9c7ac8e]:last-child {\n    border-radius: 0 0 5px 0;\n}\n.img[data-v-d9c7ac8e] {\n    width: 100px;\n}\n.modal-wrapper[data-v-d9c7ac8e] {\n    z-index: 999;\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    padding: 40px 10px;\n    text-align: center\n}\n.modal-wrapper[data-v-d9c7ac8e]:target {\n    opacity: 1;\n    visibility: visible;\n    transition: opacity .4s, visibility .4s;\n}\n.modal-wrapper[data-v-d9c7ac8e]::after {\n    display: inline-block;\n    height: 100%;\n    margin-left: -.05em;\n    vertical-align: middle;\n    content: \"\"\n}\n.modal-wrapper .modal-window[data-v-d9c7ac8e] {\n    box-sizing: border-box;\n    display: inline-block;\n    z-index: 20;\n    position: relative;\n    width: 70%;\n    max-width: 600px;\n    padding: 30px 30px 15px;\n    border-radius: 2px;\n    background: #fff;\n    box-shadow: 0 0 30px rgba(0, 0, 0, .6);\n    vertical-align: middle\n}\n.modal-wrapper .modal-window .modal-content[data-v-d9c7ac8e] {\n    max-height: 80vh;\n    overflow-y: auto;\n    text-align: left\n}\n.modal-overlay[data-v-d9c7ac8e] {\n    z-index: 10;\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background: rgba(0, 0, 0, .8)\n}\n.modal-wrapper .modal-close[data-v-d9c7ac8e] {\n    z-index: 20;\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 35px;\n    color: #95979c !important;\n    font-size: 20px;\n    font-weight: 700;\n    line-height: 35px;\n    text-align: center;\n    text-decoration: none;\n    text-indent: 0\n}\n.modal-wrapper .modal-close[data-v-d9c7ac8e]:hover {\n    color: #2b2e38 !important\n}\n#x-button[data-v-d9c7ac8e] {\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n    outline: none;\n    padding: 0;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38138,112 +38159,147 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", [
-      _c("label", { attrs: { for: "title" } }, [_vm._v("タイトル：")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.title,
-            expression: "title"
-          }
-        ],
-        attrs: { type: "text", name: "title", id: "title" },
-        domProps: { value: _vm.title },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.title = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "author" } }, [_vm._v("著者名　：")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.author,
-            expression: "author"
-          }
-        ],
-        attrs: { type: "text", name: "author", id: "author" },
-        domProps: { value: _vm.author },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.author = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "comment" } }, [_vm._v("コメント：")]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("textarea", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.comment,
-            expression: "comment"
-          }
-        ],
-        attrs: { name: "comment", id: "comment", cols: "30", rows: "4" },
-        domProps: { value: _vm.comment },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.comment = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm.view
-        ? _c("input", {
-            attrs: { type: "file", name: "image", id: "image" },
-            on: { change: _vm.confirmImage }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm.confirmImage
-        ? _c("p", [
-            _c("img", {
-              staticClass: "img",
-              attrs: { src: _vm.confirmedImage, alt: "" }
-            })
+    _vm.inputForm
+      ? _c("div", { staticClass: "modal-wrapper" }, [
+          _c("div", {
+            staticClass: "modal-overlay",
+            on: { click: _vm.inputCancel }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-window" }, [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("label", { attrs: { for: "title" } }, [_vm._v("タイトル：")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.title,
+                    expression: "title"
+                  }
+                ],
+                attrs: { type: "text", name: "title", id: "title" },
+                domProps: { value: _vm.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.title = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "author" } }, [_vm._v("著者名　：")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.author,
+                    expression: "author"
+                  }
+                ],
+                attrs: { type: "text", name: "author", id: "author" },
+                domProps: { value: _vm.author },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.author = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "comment" } }, [
+                _vm._v("コメント：")
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.comment,
+                    expression: "comment"
+                  }
+                ],
+                attrs: {
+                  name: "comment",
+                  id: "comment",
+                  cols: "30",
+                  rows: "3"
+                },
+                domProps: { value: _vm.comment },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.comment = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm.view
+                ? _c("input", {
+                    attrs: { type: "file", name: "image", id: "image" },
+                    on: { change: _vm.confirmImage }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm.confirmImage
+                ? _c("p", [
+                    _c("img", {
+                      staticClass: "img",
+                      attrs: { src: _vm.confirmedImage, alt: "" }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.confirm_message))]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("button", { on: { click: _vm.addBook } }, [_vm._v("登録")]),
+              _vm._v(" "),
+              _c("button", { on: { click: _vm.inputCancel } }, [
+                _vm._v("キャンセル")
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "modal-close",
+                attrs: { id: "x-button" },
+                on: { click: _vm.inputCancel }
+              },
+              [_vm._v("×")]
+            )
           ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.confirm_message))]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.addBook } }, [_vm._v("登録")]),
-      _vm._v(" "),
-      _c("hr")
-    ]),
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("div", [
+      _c("input", {
+        attrs: { type: "button", value: "新規登録" },
+        on: { click: _vm.inputStart }
+      }),
+      _vm._v(" "),
       _c("label", { attrs: { for: "serch_title" } }, [
         _vm._v("タイトル検索：")
       ]),
@@ -38359,7 +38415,7 @@ var render = function() {
                   [
                     _c("img", {
                       staticClass: "img",
-                      attrs: { src: book.path, alt: "image" }
+                      attrs: { src: book.path, alt: "【動画】" }
                     })
                   ]
                 )
@@ -38512,7 +38568,7 @@ var render = function() {
                   name: "updateComment",
                   id: "updateComment",
                   cols: "30",
-                  rows: "4"
+                  rows: "3"
                 },
                 domProps: { value: _vm.updateComment },
                 on: {
