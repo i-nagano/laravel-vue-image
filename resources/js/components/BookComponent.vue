@@ -31,11 +31,11 @@
 
         <!-- Bookの一覧画面 -->
         <div>
-            <input type="button" value="新規登録" v-on:click="inputStart">
             <label for="serch_title">タイトル検索：</label>
             <input type="search" name="" id="" v-model="search_title">
             <button v-on:click="searchBooks">検索</button>
             <button v-on:click="clearBooks">クリア</button>
+            <input type="button" value="新規登録" v-on:click="inputStart">
             <br>
             <p v-if="search_error_message"> {{ search_error_message }} </p>
             <table>
