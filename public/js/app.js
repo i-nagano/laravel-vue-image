@@ -2037,6 +2037,7 @@ __webpack_require__.r(__webpack_exports__);
       ;
       _axios_auth_js__WEBPACK_IMPORTED_MODULE_0__.default.get('/api/books/search/' + this.search_title).then(function (response) {
         _this2.books = response.data;
+        console.log(response.data);
       })["catch"](function (error) {
         _this2.message = error;
       });
@@ -2061,6 +2062,7 @@ __webpack_require__.r(__webpack_exports__);
         _this3.author = "";
         _this3.comment = "";
         _this3.message = "";
+        _this3.search_title = "";
         _this3.confirmedImage = ""; //ファイル選択のクリア
 
         _this3.view = false;
@@ -2069,7 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
           this.view = true;
         });
 
-        console.log(response);
+        console.log(response.data);
       })["catch"](function (error) {
         _this3.message = error;
       });
@@ -2111,7 +2113,7 @@ __webpack_require__.r(__webpack_exports__);
         _this4.updateForm = false;
         _this4.message = "";
         _this4.search_title = "";
-        console.log(response);
+        console.log(response.data);
       })["catch"](function (error) {
         _this4.message = error;
       });
@@ -2125,7 +2127,7 @@ __webpack_require__.r(__webpack_exports__);
         _this5.getBooks();
 
         _this5.message = "";
-        console.log(response);
+        console.log(response.data);
       })["catch"](function (error) {
         _this5.message = error;
       });
@@ -38295,11 +38297,6 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", [
-      _c("input", {
-        attrs: { type: "button", value: "新規登録" },
-        on: { click: _vm.inputStart }
-      }),
-      _vm._v(" "),
       _c("label", { attrs: { for: "serch_title" } }, [
         _vm._v("タイトル検索：")
       ]),
@@ -38328,6 +38325,11 @@ var render = function() {
       _c("button", { on: { click: _vm.searchBooks } }, [_vm._v("検索")]),
       _vm._v(" "),
       _c("button", { on: { click: _vm.clearBooks } }, [_vm._v("クリア")]),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "button", value: "新規登録" },
+        on: { click: _vm.inputStart }
+      }),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),

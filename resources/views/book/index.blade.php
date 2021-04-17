@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'laravel-vue-spa') }}</title>
+    <title>{{ config('app.name', 'laravel-vue-image') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset(mix('js/app.js')) }}" defer></script>

@@ -185,6 +185,7 @@
                     .get('/api/books/search/' + this.search_title)
                     .then(response => {
                         this.books = response.data;
+                        console.log(response.data);
                     })
                     .catch(error => {
                         this.message = error;
@@ -217,7 +218,7 @@
                         this.$nextTick(function () {
                             this.view = true;
                         });
-                        console.log(response);
+                        console.log(response.data);
                     })
                     .catch(error => {
                         this.message = error;
@@ -259,7 +260,7 @@
                         this.updateForm = false;
                         this.message = "";
                         this.search_title = "";
-                        console.log(response);
+                        console.log(response.data);
                     })
                     .catch(error => {
                         this.message = error;
@@ -272,7 +273,7 @@
                         alert("ID「" + id + "」の情報を削除しました");
                         this.getBooks();
                         this.message = "";
-                        console.log(response);
+                        console.log(response.data);
                     })
                     .catch(error => {
                         this.message = error;
