@@ -210,6 +210,7 @@
                         this.author = "";
                         this.comment = "";
                         this.message = "";
+                        this.search_title = "";
                         this.confirmedImage = "";
                         //ファイル選択のクリア
                         this.view = false;
