@@ -40,23 +40,23 @@
             <p v-if="search_error_message"> {{ search_error_message }} </p>
             <table>
                 <tr v-if="viewtr">
-                    <th>
+                    <th class="th_id">
                         ID
                     </th>
-                    <th>
+                    <th class="th_title">
                         タイトル
                     </th>
-                    <th>
+                    <th class="th_author">
                         著者名
                     </th>
-                    <th>
+                    <th class="th_commet">
                         コメント（評価）
                     </th>
-                    <th>
+                    <th class="th_image">
                         イメージ
                     </th>
-                    <th>-</th>
-                    <th>-</th>
+                    <th class="th_edit">-</th>
+                    <th class="th_delete">-</th>
                 </tr>
                 <tr v-for="book in books" v-bind:key="book.id">
                     <td>
@@ -299,7 +299,6 @@
             },
         },
     };
-
 </script>
 
 <style scoped>
@@ -319,7 +318,6 @@
     }
 
     table th {
-        width: 120px;
         text-align: center;
         color: white;
         background: linear-gradient(#829ebc, #225588);
@@ -328,8 +326,39 @@
         border-bottom: 1px solid #3c6690;
         box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
         padding: 10px 0;
+    }
+
+    .th_id {
+        width: 50px;
+    }
+
+    .th_title {
+        width: 120px;
         resize: horizontal;
         overflow: auto;
+    }
+
+    .th_author {
+        width: 120px;
+        resize: horizontal;
+        overflow: auto;
+    }
+
+    .th_commet {
+        width: 300px;
+        resize: horizontal;
+        overflow: auto;
+    }
+
+    .th_image {
+        width: 100px;
+    }
+
+    .th_edit {
+        width: 50px;
+    }
+    .th_delete {
+        width: 50px;
     }
 
     table td {
@@ -443,5 +472,4 @@
         padding: 0;
         appearance: none;
     }
-
 </style>
