@@ -304,7 +304,7 @@
 
 <style scoped>
     table {
-        width: 60%;
+        /* width: 100%; */
         border-collapse: separate;
         border-spacing: 0;
     }
@@ -319,6 +319,7 @@
     }
 
     table th {
+        width: 120px;
         text-align: center;
         color: white;
         background: linear-gradient(#829ebc, #225588);
@@ -327,6 +328,8 @@
         border-bottom: 1px solid #3c6690;
         box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
         padding: 10px 0;
+        resize: horizontal;
+        overflow: auto;
     }
 
     table td {
@@ -336,6 +339,10 @@
         border-top: none;
         box-shadow: 0px -3px 5px 1px #eee inset;
         padding: 10px 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 0;
     }
 
     table td:last-child {
